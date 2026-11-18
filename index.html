@@ -154,7 +154,7 @@ const packs=[
  {name:'BaZaHawพร้อมลั่น',author:'BaZaHaw',key:'p29'},
 ];
 
-const ico={squarePen:'<rect x="3.5" y="4" width="15.5" height="16" rx="2"/><path d="M12 17.5l2.5-.5 6-6a2 2 0 0 0-2.8-2.8l-6 6-.5 2.5Z"/>',pin:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>',plus:'<path d="M12 4v16M4 12h16"/>',heart:'<path d="M20.8 8.5c0 4.3-8.8 10.3-8.8 10.3S3.2 12.8 3.2 8.5a4.7 4.7 0 0 1 8.8-2.1 4.7 4.7 0 0 1 8.8 2.1Z"/>',bookmark:'<path d="M6 4h12v17l-6-4.4L6 21Z"/>',trash:'<path d="M4 6h16M9 6V4h6v2m3 0-1 14H7L6 6m4 4v7m4-7v7"/>',folder:'<path d="M3 7h7l2 2h9v11H3Z"/>',check:'<path d="m4 12 5 5L20 6"/>',share:'<path d="M12 16V3m-5 5 5-5 5 5M4 14v6h16v-6"/>',arrow:'<path d="m14 4-8 8 8 8"/>',layers:'<path d="m12 2 10 6-10 6L2 8l10-6Zm-10 11 10 6 10-6"/>',x:'<path d="M5 5 19 19M19 5 5 19"/>',more:'<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/>',camera:'<rect x="3" y="6" width="18" height="15" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6 9 3h6l1 3"/>'};
+const ico={moveFirst:'<path d="M5 4.5h14M12 20V8m-5 5 5-5 5 5"/>',squarePen:'<rect x="3.5" y="4" width="15.5" height="16" rx="2"/><path d="M12 17.5l2.5-.5 6-6a2 2 0 0 0-2.8-2.8l-6 6-.5 2.5Z"/>',pin:'<path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.6"/>',plus:'<path d="M12 4v16M4 12h16"/>',heart:'<path d="M20.8 8.5c0 4.3-8.8 10.3-8.8 10.3S3.2 12.8 3.2 8.5a4.7 4.7 0 0 1 8.8-2.1 4.7 4.7 0 0 1 8.8 2.1Z"/>',bookmark:'<path d="M6 4h12v17l-6-4.4L6 21Z"/>',trash:'<path d="M4 6h16M9 6V4h6v2m3 0-1 14H7L6 6m4 4v7m4-7v7"/>',folder:'<path d="M3 7h7l2 2h9v11H3Z"/>',check:'<path d="m4 12 5 5L20 6"/>',share:'<path d="M12 16V3m-5 5 5-5 5 5M4 14v6h16v-6"/>',arrow:'<path d="m14 4-8 8 8 8"/>',layers:'<path d="m12 2 10 6-10 6L2 8l10-6Zm-10 11 10 6 10-6"/>',x:'<path d="M5 5 19 19M19 5 5 19"/>',more:'<circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/>',clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/>',camera:'<rect x="3" y="6" width="18" height="15" rx="2"/><circle cx="12" cy="13" r="4"/><path d="M8 6 9 3h6l1 3"/>'};
 const svg=(name,cls='')=>`<svg class="${cls}" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" stroke="currentColor" fill="none" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">${ico[name]||ico.plus}</svg>`;
 const $=id=>document.getElementById(id);
 const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -168,10 +168,22 @@ const emojiCategories=[{icon:'😀',label:'笑脸与情绪',symbols:'😀 😃 �
 {icon:'🚩',label:'旅行与标志',symbols:'✈️ 🚀 🚕 🚘 🚲 🚢 🏖️ 🏕️ 🏙️ 🌇 🗽 🏰 🗺️ 🏳️ 🚩 ✅ ❌ ❗ ❓'}];
 const storeThemes=['推荐','热门','节日'];
 const recTabs=[{key:'推荐',icon:'🔥'},{key:'闪亮',icon:'✨'},{key:'涂鸦',icon:'↪'},{key:'文字',icon:'🅣'},{key:'爱心',icon:'💗'},{key:'派对',icon:'🍕'},{key:'清新',icon:'🌱'},{key:'书签',icon:'🔖'}];
-let state={tab:'mine',sub:'',activePack:null,activeFolder:null,search:'',storeTheme:'推荐',recFilter:'推荐',emojiCat:0,recent:[{id:'recent0',src:ASSETS.recent0,type:'image',name:'recent'},{id:'recent1',src:ASSETS.recent1,type:'image',name:'YES!'}],emojiRecent:['😂','❤️','🥹','🔥','😍'],favorites:[],favPacks:[],uploads:[{id:'mine_demo',src:ASSETS.myphoto,type:'image',name:'我的贴纸'}],folders:[{id:'folder_demo1',name:'可爱日常',items:['r4','r6','g4','r7']},{id:'folder_demo2',name:'甜蜜时刻',items:['r6','r8','g8','g11']},{id:'folder_demo3',name:'旅行记忆',items:['r7','r2','g4','r1']},{id:'folder_demo4',name:'派对庆祝',items:['g0','r3','g5','r9']},{id:'folder_demo5',name:'文字碎片',items:['r5','r3','g1','r2']}],saveUpload:false,pendingFile:null,currentSticker:null,uploadTarget:'library',favoritePins:[],favoriteManageMode:false,selectedFavoriteIds:[],collectionManageMode:false,selectedCollectionIds:[],sortingFolders:false,preventFolderClickUntil:0};
+let state={tab:'mine',sub:'',activePack:null,activeFolder:null,search:'',storeTheme:'推荐',recFilter:'推荐',emojiCat:0,recent:[{id:'recent0',src:ASSETS.recent0,type:'image',name:'recent'},{id:'recent1',src:ASSETS.recent1,type:'image',name:'YES!'}],emojiRecent:['😂','❤️','🥹','🔥','😍'],favorites:[],favPacks:[],uploads:[{id:'mine_demo',src:ASSETS.myphoto,type:'image',name:'我的贴纸'}],folders:[{id:'folder_demo1',name:'可爱日常',items:['r4','r6','g4','r7']},{id:'folder_demo2',name:'甜蜜时刻',items:['r6','r8','g8','g11']},{id:'folder_demo3',name:'旅行记忆',items:['r7','r2','g4','r1']},{id:'folder_demo4',name:'派对庆祝',items:['g0','r3','g5','r9']},{id:'folder_demo5',name:'文字碎片',items:['r5','r3','g1','r2']}],saveUpload:false,pendingFile:null,currentSticker:null,uploadTarget:'library',favoriteManageMode:false,selectedFavoriteIds:[],collectionManageMode:false,selectedCollectionIds:[],sortingFolders:false,preventFolderClickUntil:0};
 let toastTimer,pressTimer,holdTriggered=false,closePointer=null;
-const saved=()=>{try{localStorage.setItem('tiktok_sticker_opt_data',JSON.stringify({favorites:state.favorites,favoritePins:state.favoritePins,favPacks:state.favPacks,emojiRecent:state.emojiRecent,folders:state.folders,uploads:state.uploads.filter(x=>x.id==='mine_demo'||x.src.length<850000)}))}catch(e){}};
-try{const v=JSON.parse(localStorage.getItem('tiktok_sticker_opt_data')||'null');if(v){['favorites','favoritePins','favPacks','emojiRecent','folders','uploads'].forEach(k=>{if(Array.isArray(v[k]))state[k]=v[k]})}}catch(e){}
+const saved=()=>{try{localStorage.setItem('tiktok_sticker_opt_data',JSON.stringify({favorites:state.favorites,favPacks:state.favPacks,emojiRecent:state.emojiRecent,folders:state.folders,uploads:state.uploads.filter(x=>x.id==='mine_demo'||x.src.length<850000)}))}catch(e){}};
+try{
+ const v=JSON.parse(localStorage.getItem('tiktok_sticker_opt_data')||'null');
+ if(v){
+  ['favorites','favPacks','emojiRecent','folders','uploads'].forEach(k=>{if(Array.isArray(v[k]))state[k]=v[k]});
+  // Upgrade the old 'pin' ordering to ordinary order; there is no persistent pin status.
+  if(Array.isArray(v.favoritePins)&&v.favoritePins.length){
+   const oldPins=new Set(v.favoritePins);
+   const byId=new Map(state.favorites.map(x=>[x.id,x]));
+   state.favorites=[...v.favoritePins.map(id=>byId.get(id)).filter(Boolean),...state.favorites.filter(x=>!oldPins.has(x.id))];
+   saved();
+  }
+ }
+}catch(e){}
 // 单文件演示：本机 IndexedDB 保存实际上传的静态图、GIF 和视频 Blob，不上传至服务器。
 let uploadDbTask;
 function openUploadDb(){
@@ -247,7 +259,7 @@ function renderMine(){
  $('minePane').innerHTML=`<div id="mineRecent" class="heading first">最近使用</div><div class="horizontal"><button class="mini-sticker recent-upload-entry" data-act="upload" aria-label="直接上传贴纸" title="上传贴纸"><img src="${ASSETS.r0}" alt=""/></button>${recent.map(x=>mediaNode(x,'mini-sticker')).join('')}</div><div class="section-line"></div>
  <div class="heading">我的合集 ${state.sortingFolders?`<button class="folder-sort-done" data-act="finishSorting">完成</button>`:`<button class="icon-action" data-act="newFolder" aria-label="新建合集">${svg('plus')}</button>`}</div>
  <div class="folders ${state.sortingFolders?'sorting':''}" id="folderStrip">${folderList.map(f=>`<div class="folder-card ${f.id==='fav_folder'?'fav-folder':''} ${state.sortingFolders&&f.id!=='fav_folder'?'sorting-card':''}" data-folder="${esc(f.id)}" tabindex="0" role="button" aria-label="打开${esc(f.name)}">${folderCover(f)}<div class="folder-name">${esc(f.name)}</div>${state.sortingFolders&&f.id!=='fav_folder'?`<div class="folder-sort-controls"><button data-move-folder="${f.id}" data-direction="-1" aria-label="向左移动">‹</button><button data-move-folder="${f.id}" data-direction="1" aria-label="向右移动">›</button></div>`:''}</div>`).join('')}</div>
- <div class="section-line"></div><div class="heading">我的贴纸 <button class="icon-action" data-act="uploadToMine" aria-label="上传贴纸" title="上传贴纸">${svg('plus')}</button></div><div class="media-grid">${up.map(x=>mediaNode(x)).join('')}</div>`;
+ <div class="section-line"></div><div class="heading">我的贴纸 <button class="icon-action" data-act="uploadToMine" aria-label="上传贴纸" title="上传贴纸">${svg('plus')}</button></div><div class="media-grid" data-sticker-zone="my-uploads">${up.map(x=>mediaNode(x)).join('')}</div>`;
  bindItems($('minePane')); bindActions($('minePane'));bindFolderReorder();
 }
 function reorderFolderById(fromId,toId){
@@ -375,17 +387,25 @@ function openPack(i){state.activePack=i;let p=packs[i];let parts=Array.from({len
  $('detailPane').innerHTML=`<div class="detail-top"><button class="back-btn" data-act="goStore" aria-label="返回">${svg('arrow')}</button><strong>贴纸合集</strong></div><div class="detail-cover"><img src="${ASSETS[p.key]}"><div class="detail-info"><strong>${esc(p.name)}</strong><p>创建者 · ${esc(p.author)}</p><button class="btn-small" data-act="favPack">${state.favPacks.includes(p.key)?'♥ 已收藏合集':'♡ 收藏合集'}</button></div></div><div class="section-line"></div><div class="heading">全部贴纸 <span class="muted">长按单张可收藏</span></div><div class="detail-grid">${parts.map(x=>mediaNode(x)).join('')}</div>`;
  bindActions($('detailPane'));bindItems($('detailPane'));page('detail')}
 function orderedFavorites(){
- const pinned=state.favoritePins||[], lookup=new Map(state.favorites.map(x=>[x.id,x]));
- return [...pinned.map(id=>lookup.get(id)).filter(Boolean),...state.favorites.filter(x=>!pinned.includes(x.id))];
+ return state.favorites;
 }
-function setFavoritePin(item,shouldPin){
- state.favoritePins=shouldPin?[item.id,...state.favoritePins.filter(id=>id!==item.id)]:state.favoritePins.filter(id=>id!==item.id);
+function moveFavoriteToFront(item){
+ const index=state.favorites.findIndex(x=>x.id===item.id);
+ if(index<0)return;
+ const [moving]=state.favorites.splice(index,1);
+ state.favorites.unshift(moving);
  saved();renderMine();openFolder('fav_folder');
+}
+function moveMyStickerToFront(item){
+ const index=state.uploads.findIndex(x=>x.id===item.id);
+ if(index<0)return;
+ const [moving]=state.uploads.splice(index,1);
+ state.uploads.unshift(moving);
+ saved();renderMine();
 }
 function removeFavorites(ids){
  const removed=new Set(ids);
  state.favorites=state.favorites.filter(x=>!removed.has(x.id));
- state.favoritePins=state.favoritePins.filter(id=>!removed.has(id));
  state.selectedFavoriteIds=[];
  saved();renderMine();openFolder('fav_folder');
 }
@@ -407,7 +427,6 @@ function deleteCollectionStickers(ids, folderId){
   state.uploads=state.uploads.filter(x=>!owned.has(x.id));
   state.recent=state.recent.filter(x=>!owned.has(x.id));
   state.favorites=state.favorites.filter(x=>!owned.has(x.id));
-  state.favoritePins=state.favoritePins.filter(id=>!owned.has(id));
   state.folders.forEach(f=>{if(f.id!==folderId)f.items=f.items.filter(id=>!owned.has(id))});
  }
  state.selectedCollectionIds=[];
@@ -479,20 +498,21 @@ function openFolder(id){
 
 function togglePackFav(key){let a=state.favPacks,i=a.indexOf(key);if(i>=0){a.splice(i,1);alertToast('已取消收藏合集')}else{a.unshift(key);alertToast('已收藏合集')}saved()}
 function favIndex(item){return state.favorites.findIndex(x=>x.id===item.id)}
-function toggleFav(item){let i=favIndex(item);if(i>=0){state.favorites.splice(i,1);state.favoritePins=state.favoritePins.filter(id=>id!==item.id)}else{state.favorites.unshift(item)}saved();renderMine()}
+function toggleFav(item){let i=favIndex(item);if(i>=0){state.favorites.splice(i,1);}else{state.favorites.unshift(item)}saved();renderMine()}
 function pick(item){state.currentSticker=item;state.recent=[item,...state.recent.filter(x=>x.id!==item.id)].slice(0,12);if(item.type==='emoji'){state.emojiRecent=[item.emoji,...state.emojiRecent.filter(x=>x!==item.emoji)].slice(0,12)}saved();renderMine();if(state.tab==='emoji')renderEmoji();$('canvasSticker').innerHTML=item.type==='emoji'?`<span class="canvas-emoji" id="activeCanvas">${esc(item.emoji)}</span>`:item.type==='label'?`<div class="canvas-label" id="activeCanvas">${esc(item.label)}</div>`:item.type==='video'?`<video id="activeCanvas" class="canvas-sticker" src="${item.src}" autoplay muted loop playsinline></video>`:`<img id="activeCanvas" class="canvas-sticker" src="${item.src||ASSETS[item.id]}">`;closeActions();$('sheet').classList.add('closed');$('editor').classList.add('active');let can=$('activeCanvas');if(can){let px=0,py=0,startX=0,startY=0;can.addEventListener('pointerdown',e=>{startX=e.clientX-px;startY=e.clientY-py;can.setPointerCapture(e.pointerId)});can.addEventListener('pointermove',e=>{if(!can.hasPointerCapture(e.pointerId))return;px=e.clientX-startX;py=e.clientY-startY;can.style.transform=`translate(${px}px,${py}px)`})}}
 function closeEditor(){ $('sheet').classList.remove('closed');$('editor').classList.remove('active')}
 function renderSource(item){if(!item)return '';return item.type==='emoji'?`<span class="emoji">${esc(item.emoji)}</span>`:item.type==='label'?`<span class="label-mini">${esc(item.label)}</span>`:item.type==='video'?`<video autoplay muted loop playsinline src="${item.src}" style="max-height:64px;max-width:78px"></video>`:`<img src="${item.src||ASSETS[item.id]}">`}
-function openActions(item){
+function openActions(item,context={}){
  if(!item)return;
  state.actionItem=item;
  const own=state.uploads.some(x=>x.id===item.id),fav=favIndex(item)>=0;
  const inFav=state.sub==='folder'&&state.activeFolder==='fav_folder';
  const inCustom=state.sub==='folder'&&state.activeFolder&&state.activeFolder!=='fav_folder';
- const pinned=state.favoritePins.includes(item.id);
+ const inMyUploads=own&&!!context.fromMyUploads&&state.tab==='mine'&&!state.sub;
  let rows=inFav?
-   [['removeFavorite','heart','移除收藏'],[pinned?'unpinFavorite':'pinFavorite','pin',pinned?'取消置顶':'置顶']]:
+   [['removeFavorite','heart','移除收藏'],['moveFavoriteFirst','moveFirst','移到最前']]:
    [[fav?'unfav':'fav','heart',fav?'取消收藏':'收藏贴纸'],...(inCustom?[['deleteFromCollection','trash','删除贴纸']]:[])];
+ if(inMyUploads)rows.push(['moveMineFirst','moveFirst','移到最前']);
  if(own&&!inFav&&!inCustom)rows.push(['delete','trash','删除我的贴纸']);
  const h=`<div class="action-handle"></div><div class="action-preview">${renderSource(item)}<div><b>${esc(item.name||'贴纸')}</b><p>${own?'我的素材':'长按贴纸 · 快捷管理'}</p></div></div>${rows.map(([a,i,l])=>`<button class="action-row ${a==='delete'||a==='deleteFromCollection'||a==='removeFavorite'?'danger':''}" data-sheetaction="${a}">${svg(i)}<span>${l}</span></button>`).join('')}`;
  setSheet(h);
@@ -506,7 +526,8 @@ function runAction(action){
  if(action==='fav'||action==='unfav'){toggleFav(item);closeActions();if(state.sub==='folder')openFolder(state.activeFolder);return}
  if(action==='removeFavorite'){closeActions();removeFavorites([item.id]);return}
  if(action==='deleteFromCollection'){confirmDeleteCollectionStickers([item.id]);return}
- if(action==='pinFavorite'||action==='unpinFavorite'){closeActions();setFavoritePin(item,action==='pinFavorite');return}
+ if(action==='moveFavoriteFirst'){closeActions();moveFavoriteToFront(item);return}
+ if(action==='moveMineFirst'){closeActions();moveMyStickerToFront(item);return}
  if(action==='delete'){openDelete(item);return}
 
 }
@@ -518,14 +539,14 @@ function newFolder(){
   const folder={id:'folder_'+Date.now(),name,items:[]};state.folders.unshift(folder);saved();renderMine();closeActions();openFolder(folder.id);
  };
 }
-function openDelete(item){setSheet(`<div class="action-handle"></div><div class="action-title">删除这张贴纸？</div><div class="action-preview">${renderSource(item)}<div><b>从「我的贴纸」删除</b><p>不会移除已发布作品中的贴纸。</p></div></div><div class="action-buttons"><button class="secondary" id="cancel">取消</button><button class="primary" id="confirmDelete">删除</button></div>`);$('cancel').onclick=closeActions;$('confirmDelete').onclick=()=>{deleteUploadFile(item.id);state.uploads=state.uploads.filter(x=>x.id!==item.id);state.favorites=state.favorites.filter(x=>x.id!==item.id);state.favoritePins=state.favoritePins.filter(id=>id!==item.id);state.folders.forEach(f=>f.items=f.items.filter(id=>id!==item.id));state.recent=state.recent.filter(x=>x.id!==item.id);saved();renderMine();closeActions();alertToast('贴纸已删除')};}
+function openDelete(item){setSheet(`<div class="action-handle"></div><div class="action-title">删除这张贴纸？</div><div class="action-preview">${renderSource(item)}<div><b>从「我的贴纸」删除</b><p>不会移除已发布作品中的贴纸。</p></div></div><div class="action-buttons"><button class="secondary" id="cancel">取消</button><button class="primary" id="confirmDelete">删除</button></div>`);$('cancel').onclick=closeActions;$('confirmDelete').onclick=()=>{deleteUploadFile(item.id);state.uploads=state.uploads.filter(x=>x.id!==item.id);state.favorites=state.favorites.filter(x=>x.id!==item.id);;state.folders.forEach(f=>f.items=f.items.filter(id=>id!==item.id));state.recent=state.recent.filter(x=>x.id!==item.id);saved();renderMine();closeActions();alertToast('贴纸已删除')};}
 function uploadFile(){ $('filePicker').click() }
 
 function bindItems(root){root.querySelectorAll('[data-item]').forEach(el=>{const get=()=>{let id=el.dataset.item;if(id.startsWith('e'))return emojiItem(id.slice(1));return getAsset(id)};let holding=false;let startX,startY;
- el.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;holdTriggered=false;holding=true;startX=e.clientX;startY=e.clientY;clearTimeout(pressTimer);pressTimer=setTimeout(()=>{if(!holding)return;holdTriggered=true;openActions(get())},480)});
+ el.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;holdTriggered=false;holding=true;startX=e.clientX;startY=e.clientY;clearTimeout(pressTimer);pressTimer=setTimeout(()=>{if(!holding)return;holdTriggered=true;openActions(get(),{fromMyUploads:!!el.closest('[data-sticker-zone="my-uploads"]')})},480)});
  el.addEventListener('pointermove',e=>{if(!holding)return;if(Math.abs(e.clientX-startX)>11||Math.abs(e.clientY-startY)>11){holding=false;clearTimeout(pressTimer)}});
  el.addEventListener('pointerup',()=>{holding=false;clearTimeout(pressTimer)});el.addEventListener('pointercancel',()=>{holding=false;clearTimeout(pressTimer)});
- el.addEventListener('contextmenu',e=>{e.preventDefault();holdTriggered=true;clearTimeout(pressTimer);openActions(get())});el.addEventListener('click',e=>{if(holdTriggered){holdTriggered=false;e.preventDefault();return}pick(get())});
+ el.addEventListener('contextmenu',e=>{e.preventDefault();holdTriggered=true;clearTimeout(pressTimer);openActions(get(),{fromMyUploads:!!el.closest('[data-sticker-zone="my-uploads"]')})});el.addEventListener('click',e=>{if(holdTriggered){holdTriggered=false;e.preventDefault();return}pick(get())});
  });}
 function bindActions(root){
  root.querySelectorAll('[data-act]').forEach(b=>b.addEventListener('click',()=>{
